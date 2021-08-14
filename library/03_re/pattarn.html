@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>パターン表現</title>
+</head>
+<body>
+    <div> patternダグに正規表現を入れる</div>
+    <br>
+    <div>
+        0120-00-0000 (フリーダイヤル) <br>
+        000-000-0000 (市外局番)　<br>
+        000-0000-0000 (電話番号)
+    </div>
+
+    <form action="" method="get">
+        <div>フリーダイヤルの場合</div>
+
+        <input type="text" pattern="0120-((\d{2}-\d{4})|(\d{3}-\d{3}))">
+
+        <div>市外局番の場合</div>
+        <input type="text" pattern="\d{2,4}-\d{2,4}-\d{4}">
+
+        <div>電話番号</div>
+        <input type="text" pattern="(090|080|070)-\d{4}-\d{4}">
+
+        <div>URLの場合</div>
+        <input type="text" pattern="http[s]?:\/\/[\w/%&$#?()=~+-]+">
+
+        <div>メールアドレスの場合</div>
+        <input type="text" pattern="[\w-]+@([\w-]+\.)+[a-zA-Z]{2,}">
+
+        <input type="submit" value="送信">
+    </form>
+
+
+
+
+</body>
+</html>
