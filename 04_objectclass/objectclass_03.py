@@ -6,6 +6,16 @@ class Person(object):
         self.x =100
 
     # クラスメソッド
+
+    """
+    オブジェクトを生成しない状態でもメソッドにアクセスできるようにする
+    
+    print(Person.kind)
+    print(Person.what_is_your_kind)
+    
+    >>>　human
+    
+    """
     @classmethod
     def what_is_your_kind(cls):
         return cls.kind
