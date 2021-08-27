@@ -1,42 +1,14 @@
-"""
-キュー
-スレッド間で入れたり受け取ったりできる
-"""
+n = 1
 
-import logging
-import threading
-import queue
-import time
+while (n := n + 1) <= 100:
+    if (n % 3) == 0:
+        print(n, "Fizz")
 
-logging.basicConfig(
-    level=logging.DEBUG,format='%(threadName)s: %(message)s'
-)
+    if (n % 5) == 0:
+        print(n, "Buzz")
 
-def worker1(queue):
-    logging.debug('start')
+    if (n % 3) == 0 and (n % 5) == 0:
+        print(n,"Fizz Buzz")
 
-    # データ挿入
-    queue.put(100)
-    queue.put(200)
-
-    time.sleep(5)
-    logging.debug('end')
-
-def worker2(queue):
-    logging.debug('start')
-
-    # データ取り出し
-    logging.debug(queue.get())
-    logging.debug(queue.get())
-
-    logging.debug('end')
-
-if __name__ == '__main__':
-
-    queue =queue.Queue()
-    t1=threading.Thread(target=worker1, args=(queue,))
-    t2 =threading.Thread(target=worker2, args=(queue,))
-
-    t1.start()
-    t2.start()
-
+    if (n%3)!=0 and (n%5) !=0:
+        print(n)

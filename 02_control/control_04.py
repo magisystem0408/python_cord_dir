@@ -64,9 +64,10 @@ def  print_info(func):
 
 # デコレーターだとわかるように@で目印つけるて呼び出せる
 @print_info
-def  add_num(a,b):
+def add_num(a,b):
     return a+b
 r = add_num(10,20)
+
 print(r)
 
 # 時刻結果
