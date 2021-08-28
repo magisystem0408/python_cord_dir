@@ -35,10 +35,44 @@ class UserInfo:
 
 
 # 抽象クラス
+"""必ず継承先を使わないといけない"""
 class Comparetion(metaclass=ABCMeta):
     @abstractmethod
     def is_equal(self, other):
         pass
+
+    def __and__(self, other):
+        return AndComparation(self,other)
+
+    def __or__(self, other):
+        return OrComparation(self,other)
+
+class AndComparation(Comparetion):
+    def __init__(self,*args):
+        self.comparetions =args
+
+    def is_equal(self, other):
+        return all(
+            map(
+                lambda comparation:comparation.is_equal(other),
+                self.comparetions
+            )
+        )
+
+
+class OrComparation(Comparetion):
+    def __init__(self,*args):
+        self.comparetions =args
+
+    def is_equal(self, other):
+        return any(
+            map(
+                lambda comparation:comparation.is_equal(other),
+                self.comparetions
+            )
+        )
+
+
 
 
 class Filter(metaclass=ABCMeta):
@@ -47,12 +81,16 @@ class Filter(metaclass=ABCMeta):
         pass
 
 
+
 class JobNameComparetion(Comparetion):
     def __init__(self, job_name):
         self.job_name = job_name
 
     def is_equal(self, other):
         return self.job_name == other.job_name
+
+
+
 
 
 class NationalityComparation(Comparetion):
@@ -85,6 +123,19 @@ user_info_filter=UserInfoFilter()
 
 for user in user_info_filter.filter(salary_man_comparetion,user_list):
     print(user)
+
+japan_comparetion =NationalityComparation('Japan')
+
+for user in user_info_filter.filter(japan_comparetion,user_list):
+    print(user)
+
+
+# これをすると__and__が出てくる
+salary_man_japan =salary_man_comparetion & japan_comparetion
+
+for user in user_info_filter.filter(salary_man_japan,user_list):
+    print(user)
+
 
 
 # for man in UserInfoFilter.filter_users_job(user_list, 'police man'):
