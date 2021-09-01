@@ -22,6 +22,9 @@ class Human:
     @age.setter
     def age(self, value):
         print("setterを呼び出しました")
+        if value <0:
+            print("0以上を入れろボケ")
+            return
         self.__age = value
 
 
