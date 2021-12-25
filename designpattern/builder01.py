@@ -26,7 +26,7 @@ class SetMeal:
 
 # builderのインターフェース
 class SetMealBuilder(ABC):
-    #抽象クラスなので継承先で使用しないといけない
+    # 抽象クラスなので継承先で使用しないといけない
 
     def __init__(self):
         self._set_meal = SetMeal()
@@ -78,6 +78,7 @@ class PastaSetBuilder(SetMealBuilder):
 
 
 class Director:
+
     def __init__(self, builder: SetMealBuilder):
         self.__builder = builder
 
@@ -86,9 +87,8 @@ class Director:
         return self.__builder
 
     @builder.setter
-    def builder(self,builder):
-        self.__builder =builder
-
+    def builder(self, builder):
+        self.__builder = builder
 
     def build(self):
         self.builder.build_main_dish()
@@ -96,17 +96,15 @@ class Director:
         return self.builder
 
 
-sanma_builder =SannmaSetBuilder()
-pasta_builder =PastaSetBuilder()
+sanma_builder = SannmaSetBuilder()
+pasta_builder = PastaSetBuilder()
 
-director =Director(sanma_builder)
+director = Director(sanma_builder)
 print(director.build().product)
 # print(director.builder.product)
 """実行結果：メインディッシュ：さんま,サイドディッシュお味噌汁"""
 
-
-
-director.builder =pasta_builder
+director.builder = pasta_builder
 director.build()
 print(director.build().product)
 # print(director.builder.product)

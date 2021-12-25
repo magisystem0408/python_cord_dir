@@ -29,9 +29,6 @@ def worker2(barrier):
         logging.debug('end')
 
 
-
-
-
 if __name__ == '__main__':
 
     # スレッドが2つ立ち上がるまで次に進まない

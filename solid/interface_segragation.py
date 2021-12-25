@@ -29,7 +29,7 @@ from abc import ABCMeta, abstractmethod
 #
 #     def long_jamp(self):
 #         pass
-
+#
 
 class Athlete(metaclass=ABCMeta):
     pass
