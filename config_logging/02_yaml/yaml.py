@@ -33,6 +33,6 @@ with open('config.yml','w') as yaml_file:
 # 読み込む時
 
 with open('config.yml','r') as yaml_file:
-    data =yaml.load(yaml_file)
+    data =yaml.load(yaml_file, yaml.SafeLoader)
     print(data)
     print(data['db_server'])
