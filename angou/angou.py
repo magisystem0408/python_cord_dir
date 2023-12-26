@@ -1,17 +1,17 @@
 import string
-import random
 from Crypto.Cipher import AES
+import secrets
 
 print(AES.block_size)
 print(string.ascii_letters)
 
 key = ''.join(
-    random.choice(string.ascii_letters) for _ in range(AES.block_size)
+    secrets.SystemRandom().choice(string.ascii_letters) for _ in range(AES.block_size)
 )
 # 暗号化するときは、16文字でないとだめ
 
 iv = ''.join(
-    random.choice(string.ascii_letters) for _ in range(AES.block_size)
+    secrets.SystemRandom().choice(string.ascii_letters) for _ in range(AES.block_size)
 )
 
 print(key, iv)
