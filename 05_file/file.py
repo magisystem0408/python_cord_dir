@@ -29,7 +29,7 @@ with open('test.txt','r') as f:
 
     # 1行ずつ読み込みするには
     while True:
-        line = f.readline()
+        line = f.readline(5_000_000)
         if not line:
             break
 
