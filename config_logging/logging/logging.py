@@ -16,7 +16,7 @@ logging.debug('critical')
 
 # %sでformat関数を実行できる
 
-logging.info('info %s' % 'test')
+logging.info('info %s', 'test')
 
 # 複数入れたい場合は、カンマ続きで出せる
 logging.info('info %s　％s', 'test', 'test2')
