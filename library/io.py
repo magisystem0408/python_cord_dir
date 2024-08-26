@@ -29,7 +29,7 @@ url ='###########'
 
 f =io.BytesIO()
 
-r =requests.get(url)
+r =requests.get(url, timeout=60)
 f.write(r.content)
 
 with zipfile.ZipFile(f) as z:
